@@ -44,6 +44,8 @@
 // Defines
 // --------------------------------------------------------------------------------
 
+#define GRAPH_DISABLE
+
 // --------------------------------------------------------------------------------
 /// Use the define STAND_ALONE_VERSION to activate Codewarrior debugging:
 /// Only for DEBUG with IndartOne or PEMicro-Multilink:
@@ -116,7 +118,7 @@
 
 //--------------------------------------------------------------------------------
 // Set the user-defined timer, see user_defined_int_timer() in user_code.c
-//#define PID2_USER_DEFINED_CYCLE 1000    //microseconds, maximum value: 1311µs [ < (65535/50) ]
+//#define PID2_USER_DEFINED_CYCLE 1000    //microseconds, maximum value: 1311ï¿½s [ < (65535/50) ]
 
 //--------------------------------------------------------------------------------
 

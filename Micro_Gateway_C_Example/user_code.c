@@ -13,7 +13,7 @@
 // --------------------------------------------------------------------------------
 // user_code variables
 // --------------------------------------------------------------------------------
-uint16_t variable1, variable2;
+uint8_t variable1, variable2;
 uint32_t time_val, heartbeat_counter, time_64500;
 typedef struct {
     uint8_t temp0;
@@ -47,14 +47,15 @@ void usercode(void)
     if( os_time_past(time_val, 1000, OS_1ms) )
     {
         os_timestamp(&time_val, OS_1ms);
+        heartbeat_counter++;
         os_can_send_msg(CAN_BUS_0, 0x18FFFC80, 1, 8, (uint8_t)(heartbeat_counter >> 24), (uint8_t)(heartbeat_counter >> 16),
-                        (uint8_t)(heartbeat_counter >> 12),(uint8_t)(heartbeat_counter >> 8), (uint8_t)(heartbeat_counter), 0, 0, 0);
+                        (uint8_t)(heartbeat_counter >> 12),(uint8_t)(heartbeat_counter >> 8), (uint8_t)(heartbeat_counter), 0, 0, variable1);
     }
     //sends previously captured data 
     if (os_time_past(time_64500, 500, OS_1ms)) {
         os_timestamp(&time_64500, OS_1ms);
-        os_can_send_msg(CAN_BUS_4, 0x18FFFC80, 1, 8, data64500.temp0, data64500.temp1,(uint8_t)(data64500.hour >> 8), (uint8_t)(data64500.hour),
-                        (uint8_t)(data64500.pressure >> 8), (uint8_t) data64500.pressure,0,0);
+        os_can_send_msg(CAN_BUS_4, 0x18FBF480, 1, 8, data64500.temp0, data64500.temp1,(uint8_t)(data64500.hour >> 8), (uint8_t)(data64500.hour),
+                        (uint8_t)(data64500.pressure >> 8), (uint8_t) data64500.pressure,0,variable1);
     }
 }
 
@@ -72,28 +73,26 @@ void usercode(void)
 //--------------------------------------------------------------------------
 void user_can_message_receive(uint8_t hw_id, bios_can_msg_typ* msg)
 {
-    //Transmits a message from CAN_BUS_0 to CAN_BUS_4
+    //Transmits a message from CAN_BUS_4 to CAN_BUS_0
     if(hw_id == CAN_BUS_0 && msg->id == 0x1FF004AB && msg->id_ext == 1 )
     {
-        os_can_send_msg(CAN_BUS_4, msg->id, msg->id_ext, msg->len, msg->data[0], msg->data[1], msg->data[2],
+        os_can_send_msg(CAN_BUS_4, msg->id + 0x100, msg->id_ext, msg->len, msg->data[0], msg->data[1], msg->data[2],
                             msg->data[3], msg->data[4], msg->data[5], msg->data[6], msg->data[7]);
     }
     //Obtains information from 3 messages with different ids and saves it in a variable for later use
-    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FF01AB && msg->id_ext == 1) {
+    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FFF01AB && msg->id_ext == 1) {
         data64500.temp0 = msg->data[0];
         data64500.temp1 = msg->data[1];
     }
-    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FF02AB && msg->id_ext == 1) {
-        data64500.pressure = ((uint16)(msg->data[0] << 8) * 0xFF00) + ((uint16)(msg->data[1]) * 0x00FF);
+    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FFF02AB && msg->id_ext == 1) {
+        data64500.pressure = ((uint16)(msg->data[0] << 8) & 0xFF00) + ((uint16)(msg->data[1]) & 0x00FF);
     }
-    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FF03AB && msg->id_ext == 1) {
-        data64500.hour = ((uint16)(msg->data[0] << 8) * 0xFF00) + ((uint16)(msg->data[1]) * 0x00FF);
+    else if (hw_id == CAN_BUS_0 && msg->id == 0x1FFF03AB && msg->id_ext == 1) {
+        data64500.hour = ((uint16)(msg->data[0] << 8) & 0xFF00) + ((uint16)(msg->data[1]) & 0x00FF);
     }
-    else
-    {
-        // do nothing
+    else {
+        
     }
-
 }
 
 

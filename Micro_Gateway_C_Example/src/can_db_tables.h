@@ -47,11 +47,11 @@
 
 #ifdef USER_CAN_FILTER_ACTIVE
 
-    #define CAN0_FILTER_A 0x000
-    #define CAN0_FILTER_B 0x000
-    #define CAN0_MASK_A   0x000
-    #define CAN0_MASK_B   0x000
-    #define CAN0_MASK_DIVISION BIOS_CAN_ID_ALL_CLOSED
+    #define CAN0_FILTER_A 0x1FFF00AB
+    #define CAN0_FILTER_B 0x1FF004AB
+    #define CAN0_MASK_A   0x00000300
+    #define CAN0_MASK_B   0x00000000
+    #define CAN0_MASK_DIVISION BIOS_CAN_ID_EXT_A_AND_B
 
     #define CAN1_FILTER_A 0x000
     #define CAN1_FILTER_B 0x000
@@ -75,7 +75,7 @@
     #define CAN4_FILTER_B 0x000
     #define CAN4_MASK_A   0x000
     #define CAN4_MASK_B   0x000
-    #define CAN4_MASK_DIVISION BIOS_CAN_ID_ALL_CLOSED
+    #define CAN4_MASK_DIVISION BIOS_CAN_ID_EXT_A_AND_B
 
 #endif
 

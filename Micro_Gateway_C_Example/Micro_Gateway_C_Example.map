@@ -52,7 +52,7 @@ Entry point: 0x4020 (_EntryPoint)
 _startupData is allocated at 0x4061 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x2000     4415
+  _Range   pZeroOut       0x2000     4416
   _Copy    *toCopyDownBeg 0x4D6E
 } _startupData;
 
@@ -66,7 +66,7 @@ Section Name                    Size  Type     From       To       Segment
 .rodata1                          29     R     0x4498     0x44B4   ROM_4000
 NON_BANKED                      2233     R     0x44B5     0x4D6D   ROM_4000
 .copy                             55     R     0x4D6E     0x4DA4   ROM_4000
-.text                          16368     R   0xFC8000   0xFCBFEF   PAGE_FC
+.text                          16359     R   0xFC8000   0xFCBFE6   PAGE_FC
 .data                             85   R/W     0x2000     0x2054   RAM
 DEFAULT_RAM_EXT                 2140   R/W     0x2055     0x28B0   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -809,13 +809,13 @@ DEFAULT_RAM_EXT                 2140   R/W     0x2055     0x28B0   RAM
 .abs_section_3f2                   2   N/I      0x3F2      0x3F3   .absSeg737
 .abs_section_7f10                234     R     0x7F10     0x7FF9   .absSeg738
 .bss                             200   R/W     0x28B1     0x2978   RAM
-.common                         1990   R/W     0x2979     0x313E   RAM
-.stack                           512   R/W     0x313F     0x333E   RAM
-PAGE_E3_739                     8602     R   0xE38000   0xE3A199   PAGE_E3
+.common                         1991   R/W     0x2979     0x313F   RAM
+.stack                           512   R/W     0x3140     0x333F   RAM
+PAGE_E3_739                     8638     R   0xE38000   0xE3A1BD   PAGE_E3
 
 Summary of section sizes per section type:
-READ_ONLY (R):        6FF9 (dec:    28665)
-READ_WRITE (R/W):     133F (dec:     4927)
+READ_ONLY (R):        7014 (dec:    28692)
+READ_WRITE (R/W):     1340 (dec:     4928)
 NO_INIT (N/I):         383 (dec:      899)
 
 *********************************************************************************************
@@ -855,22 +855,23 @@ MODULE:                 -- graph_code.c.o --
 MODULE:                 -- user_code.c.o --
 - PROCEDURES:
      usercode_init                           FC8046       7       7       2   .text       
-     usercode                                FC804D      AD     173       3   .text       
-     user_can_message_receive                FC80FA      C3     195       2   .text       
-     user_int_timer_1ms                      FC81BD       1       1       2   .text       
-     user_defined_int_timer                  FC81BE       1       1       2   .text       
-     user_int_ect                            FC81BF       1       1       2   .text       
+     usercode                                FC804D      BF     191       3   .text       
+     user_can_message_receive                FC810C      BF     191       2   .text       
+     user_int_timer_1ms                      FC81CB       1       1       2   .text       
+     user_defined_int_timer                  FC81CC       1       1       2   .text       
+     user_int_ect                            FC81CD       1       1       2   .text       
 - VARIABLES:
      data64500                                 28B1       6       6      10   .bss        
-     time_val                                  2979       4       4       3   .common     
-     heartbeat_counter                         297D       4       4       6   .common     
-     time_64500                                2981       4       4       3   .common     
+     variable1                                 2979       1       1       2   .common     
+     time_val                                  297A       4       4       3   .common     
+     heartbeat_counter                         297E       4       4       9   .common     
+     time_64500                                2982       4       4       3   .common     
 MODULE:                 -- can_db_tables_data.c.o --
 - PROCEDURES:
-     can_db_tables_data_init_baudrate        FC81C0      53      83       2   .text       
-     can_create_mask                         FC8213      13      19       2   .text       
-     can_db_tables_data_init                 FC8226     12D     301       2   .text       
-     can_tables_get_tx_wait                  FC8353       4       4       2   .text       
+     can_db_tables_data_init_baudrate        FC81CE      53      83       2   .text       
+     can_create_mask                         FC8221      13      19       2   .text       
+     can_db_tables_data_init                 FC8234     13A     314       2   .text       
+     can_tables_get_tx_wait                  FC836E       4       4       2   .text       
 - VARIABLES:
      STRING.CAN_BAUDRATE_def_BEZ.1             4498      1D      29       1   .rodata1    
      bios_can_tx_buffer_full_wait              2002       2       2       1   .data       
@@ -894,51 +895,51 @@ MODULE:                 -- can_db_tables_data.c.o --
      dyn_OS_CAN3_MSG_QUEUE_B_SIZE              2890       1       1       4   DEFAULT_RAM_EXT
      dyn_OS_CAN4_MSG_QUEUE_A_SIZE              2891       1       1       4   DEFAULT_RAM_EXT
      dyn_OS_CAN4_MSG_QUEUE_B_SIZE              2892       1       1       4   DEFAULT_RAM_EXT
-     can_db                                    2985      68     104      81   .common     
-     can_block_db_ram                          29ED      23      35      28   .common     
-     can_bus_db_disable                        2A10       6       6       1   .common     
-     can_block_db_user                         2A16       B      11       8   .common     
-     can_db_baudrate                           2A21      10      16       8   .common     
+     can_db                                    2986      68     104      81   .common     
+     can_block_db_ram                          29EE      23      35      28   .common     
+     can_bus_db_disable                        2A11       6       6       1   .common     
+     can_block_db_user                         2A17       B      11       8   .common     
+     can_db_baudrate                           2A22      10      16       8   .common     
 MODULE:                 -- os_io_tables_data.c.o --
 - PROCEDURES:
-     os_io_tables_data_init                  FC8357      99     153       2   .text       
-     os_modul_specific_init                  FC83F0       5       5       2   .text       
-     os_modul_specific_routines              FC83F5       1       1       2   .text       
-     bios_timer_pwm_read_calc_first          FC83F6       5       5       2   .text       
-     lin_initialization                      FC83FB       1       1       2   .text       
-     int_rx_sci_first                        FC83FC       1       1       3   .text       
-     int_tx_sci_first                        FC83FD       1       1       3   .text       
+     os_io_tables_data_init                  FC8372      99     153       2   .text       
+     os_modul_specific_init                  FC840B       5       5       2   .text       
+     os_modul_specific_routines              FC8410       1       1       2   .text       
+     bios_timer_pwm_read_calc_first          FC8411       5       5       2   .text       
+     lin_initialization                      FC8416       1       1       2   .text       
+     int_rx_sci_first                        FC8417       1       1       3   .text       
+     int_tx_sci_first                        FC8418       1       1       3   .text       
 - VARIABLES:
      os_pwm_duty_read_timeout                  4239       2       2       1   .rodata     
-     os_port_int_val                           2A31     1C8     456      16   .common     
-     os_io_vals                                2BF9       2       2      10   .common     
-     os_io_prev_vals                           2BFB       2       2       5   .common     
-     os_io_vals_disable                        2BFD       2       2       4   .common     
-     os_pin_entprell_cnt                       2BFF       F      15       9   .common     
-     os_analog_io_vals_err                     2C0E       3       3       2   .common     
-     os_analog_io_vals_entprell_cnt            2C11       3       3       4   .common     
-     os_analog_io_vals_disable                 2C14       3       3       3   .common     
-     os_analog_io_vals                         2C17       6       6       7   .common     
-     os_analog_io_vals_kal                     2C1D       6       6      10   .common     
-     os_pwm_analog_cal_deactivate              2C23       1       1       1   .common     
-     os_pwm_vals                               2C24      17      23      16   .common     
-     os_pwm_control_vals                       2C3B      19      25       6   .common     
-     os_analog_io_sum_cnt                      2C54       3       3       3   .common     
-     os_analog_io_sum_cnt_max                  2C57       3       3       3   .common     
-     os_analog_io_pwm_index                    2C5A       3       3       8   .common     
-     os_analog_io_pwm_start_index              2C5D       1       1       5   .common     
-     os_analog_io_sum                          2C5E       C      12       8   .common     
-     os_analog_io_sum_buffer                   2C6A       C      12       2   .common     
-     os_pwm_duty_read                          2C76      48      72       7   .common     
-     eeprom_hsddaten                           2CBE      1E      30       6   .common     
-     eeprom_hsddaten_type                      2CDC       2       2       5   .common     
-     eeprom_userdaten                          2CDE      70     112       1   .common     
-     dyn_USERDATENSATZ_SIZE                    2D4E       1       1       2   .common     
-     dyn_USER_VARIABLE_SIZE                    2D4F       1       1       1   .common     
-     dyn_HSDDATENSATZ_SIZE                     2D50       1       1       2   .common     
-     dyn_M2600_ACTIVATE_RS232_RX_INTERRUPT       2D51       1       1       1   .common     
-     dyn_PID2_USER_DEFINED_CYCLE               2D52       2       2       2   .common     
-     os_io                                     2D54       A      10      30   .common     
+     os_port_int_val                           2A32     1C8     456      16   .common     
+     os_io_vals                                2BFA       2       2      10   .common     
+     os_io_prev_vals                           2BFC       2       2       5   .common     
+     os_io_vals_disable                        2BFE       2       2       4   .common     
+     os_pin_entprell_cnt                       2C00       F      15       9   .common     
+     os_analog_io_vals_err                     2C0F       3       3       2   .common     
+     os_analog_io_vals_entprell_cnt            2C12       3       3       4   .common     
+     os_analog_io_vals_disable                 2C15       3       3       3   .common     
+     os_analog_io_vals                         2C18       6       6       7   .common     
+     os_analog_io_vals_kal                     2C1E       6       6      10   .common     
+     os_pwm_analog_cal_deactivate              2C24       1       1       1   .common     
+     os_pwm_vals                               2C25      17      23      16   .common     
+     os_pwm_control_vals                       2C3C      19      25       6   .common     
+     os_analog_io_sum_cnt                      2C55       3       3       3   .common     
+     os_analog_io_sum_cnt_max                  2C58       3       3       3   .common     
+     os_analog_io_pwm_index                    2C5B       3       3       8   .common     
+     os_analog_io_pwm_start_index              2C5E       1       1       5   .common     
+     os_analog_io_sum                          2C5F       C      12       8   .common     
+     os_analog_io_sum_buffer                   2C6B       C      12       2   .common     
+     os_pwm_duty_read                          2C77      48      72       7   .common     
+     eeprom_hsddaten                           2CBF      1E      30       6   .common     
+     eeprom_hsddaten_type                      2CDD       2       2       5   .common     
+     eeprom_userdaten                          2CDF      70     112       1   .common     
+     dyn_USERDATENSATZ_SIZE                    2D4F       1       1       2   .common     
+     dyn_USER_VARIABLE_SIZE                    2D50       1       1       1   .common     
+     dyn_HSDDATENSATZ_SIZE                     2D51       1       1       2   .common     
+     dyn_M2600_ACTIVATE_RS232_RX_INTERRUPT       2D52       1       1       1   .common     
+     dyn_PID2_USER_DEFINED_CYCLE               2D53       2       2       2   .common     
+     os_io                                     2D55       A      10      30   .common     
 MODULE:                 -- lin_db_tables.c.o --
 - PROCEDURES:
 - VARIABLES:
@@ -948,15 +949,15 @@ MODULE:                 -- lin_db_tables.c.o --
      ext_dyn_lin_rx_msg_queue_write            28B8       1       1       2   .bss        
      ext_dyn_lin_rx_header_queue_read          28B9       1       1       6   .bss        
      ext_dyn_lin_rx_header_queue_write         28BA       1       1       2   .bss        
-     ext_ary_lin_test_frame_flag               2D5E       2       2       3   .common     
-     ext_dyn_lin_rx_msg_queue                  2D60      12      18       2   .common     
-     ext_dyn_lin_rx_header_queue               2D72       1       1       2   .common     
-     ext_lin_bus_db                            2D73       9       9       7   .common     
-     ext_lin_frame_db                          2D7C       8       8       4   .common     
+     ext_ary_lin_test_frame_flag               2D5F       2       2       3   .common     
+     ext_dyn_lin_rx_msg_queue                  2D61      12      18       2   .common     
+     ext_dyn_lin_rx_header_queue               2D73       1       1       2   .common     
+     ext_lin_bus_db                            2D74       9       9       7   .common     
+     ext_lin_frame_db                          2D7D       8       8       4   .common     
 MODULE:                 -- STRING.C.o (ansixbi.lib) --
 - PROCEDURES:
-     memcpy                                  FC83FE      23      35       2   .text       
-     strcmp                                  FC8421      19      25       4   .text       
+     memcpy                                  FC8419      23      35       2   .text       
+     strcmp                                  FC843C      19      25       4   .text       
 - VARIABLES:
 MODULE:                 -- rtshc12.c.o (ansixbi.lib) --
 - PROCEDURES:
@@ -967,7 +968,7 @@ MODULE:                 -- rtshc12.c.o (ansixbi.lib) --
      _LCMP                                     44E3       A      10       4   NON_BANKED  
      _LNEG                                     44ED       9       9       1   NON_BANKED  
      _LCOM                                     44F6       5       5       3   NON_BANKED  
-     _LINC                                     44FB       5       5       5   NON_BANKED  
+     _LINC                                     44FB       5       5       6   NON_BANKED  
      _LMULU16x32                               4500       F      15       1   NON_BANKED  
      _LMULS16x32                               450F      1C      28       1   NON_BANKED  
      _lDivMod                                  452B      B9     185       3   NON_BANKED  
@@ -981,16 +982,16 @@ MODULE:                 -- rtshc12.c.o (ansixbi.lib) --
 - VARIABLES:
 MODULE:                 -- bios_adc.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     AD1_HWEnDi                              FC843A      3F      63       4   .text       
-     AD2_HWEnDi                              FC8479      3D      61       4   .text       
-     AD1_Enable                              FC84B6      10      16       2   .text       
-     AD2_Enable                              FC84C6      10      16       2   .text       
-     AD1_MeasureChan                         FC84D6      48      72       2   .text       
-     AD2_MeasureChan                         FC851E      48      72       2   .text       
-     AD1_GetChanValue16                      FC8566      28      40       2   .text       
-     AD2_GetChanValue16                      FC858E      28      40       2   .text       
-     AD1_Init                                FC85B6      27      39       2   .text       
-     AD2_Init                                FC85DD      22      34       2   .text       
+     AD1_HWEnDi                              FC8455      3F      63       4   .text       
+     AD2_HWEnDi                              FC8494      3D      61       4   .text       
+     AD1_Enable                              FC84D1      10      16       2   .text       
+     AD2_Enable                              FC84E1      10      16       2   .text       
+     AD1_MeasureChan                         FC84F1      48      72       2   .text       
+     AD2_MeasureChan                         FC8539      48      72       2   .text       
+     AD1_GetChanValue16                      FC8581      28      40       2   .text       
+     AD2_GetChanValue16                      FC85A9      28      40       2   .text       
+     AD1_Init                                FC85D1      27      39       2   .text       
+     AD2_Init                                FC85F8      22      34       2   .text       
      AD1_Interrupt                             4662      63      99       1   NON_BANKED  
      AD2_Interrupt                             46C5      61      97       1   NON_BANKED  
 - VARIABLES:
@@ -1008,20 +1009,20 @@ MODULE:                 -- bios_adc.c.o (project_HCS12.lib) --
      AD2_OutV                                  28E7      10      16       2   .bss        
 MODULE:                 -- bios_can.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     bios_can_set_ext_baudrate               FC85FF      37      55       2   .text       
-     bios_can_module_filter_A_hit            FC8636      4F      79       2   .text       
-     bios_can_module_set_mask_A              FC8685      E1     225       4   .text       
-     bios_can_module_set_filter_A            FC8766      DD     221       4   .text       
-     bios_can_module_set_mask_B              FC8843      E1     225       6   .text       
-     bios_can_module_set_filter_B            FC8924      DD     221       2   .text       
-     bios_can_module_init                    FC8A01     340     832      12   .text       
-     bios_can_module_disable                 FC8D41      B6     182       4   .text       
-     bios_can_module_send_msg                FC8DF7     96A    2410     220   .text       
-     bios_can_module_get_msg                 FC9761     26A     618      62   .text       
-     bios_can_module_get_msg_id              FC99CB     18A     394      30   .text       
-     bios_can_module_msg_received            FC9B55      35      53       6   .text       
-     bios_can_module_interrupt_ack           FC9B8A      28      40      12   .text       
-     bios_can_parameter_to_number            FC9BB2      53      83       2   .text       
+     bios_can_set_ext_baudrate               FC861A      37      55       2   .text       
+     bios_can_module_filter_A_hit            FC8651      4F      79       2   .text       
+     bios_can_module_set_mask_A              FC86A0      E1     225       4   .text       
+     bios_can_module_set_filter_A            FC8781      DD     221       4   .text       
+     bios_can_module_set_mask_B              FC885E      E1     225       6   .text       
+     bios_can_module_set_filter_B            FC893F      DD     221       2   .text       
+     bios_can_module_init                    FC8A1C     340     832      12   .text       
+     bios_can_module_disable                 FC8D5C      B6     182       4   .text       
+     bios_can_module_send_msg                FC8E12     96A    2410     220   .text       
+     bios_can_module_get_msg                 FC977C     26A     618      62   .text       
+     bios_can_module_get_msg_id              FC99E6     18A     394      30   .text       
+     bios_can_module_msg_received            FC9B70      35      53       6   .text       
+     bios_can_module_interrupt_ack           FC9BA5      28      40      12   .text       
+     bios_can_parameter_to_number            FC9BCD      53      83       2   .text       
 - VARIABLES:
      bios_baudraten                            426E      78     120      15   .rodata     
      can0_buffer_prio                          28F7       3       3      24   .bss        
@@ -1039,13 +1040,13 @@ MODULE:                 -- bios_can.c.o (project_HCS12.lib) --
      can3_buffer_prio                          290B       3       3      24   .bss        
      can3_last_hw_buffer                       290E       1       1       3   .bss        
      can3_n_tx_buf                             290F       1       1       5   .bss        
-     bios_can_ext_baudrate                     2D84      10      16       6   .common     
+     bios_can_ext_baudrate                     2D85      10      16       6   .common     
 MODULE:                 -- bios_cpu.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     bios_init_cpu_clock                     FC9C05       5       5       2   .text       
-     bios_reset_watchdog                     FC9C0A       C      12      26   .text       
-     bios_disable_watchdog                   FC9C16       4       4       2   .text       
-     bios_enable_watchdog                    FC9C1A       5       5       2   .text       
+     bios_init_cpu_clock                     FC9C20       5       5       2   .text       
+     bios_reset_watchdog                     FC9C25       C      12      26   .text       
+     bios_disable_watchdog                   FC9C31       4       4       2   .text       
+     bios_enable_watchdog                    FC9C35       5       5       2   .text       
 - VARIABLES:
 MODULE:                 -- bios_interrupts.c.o (project_HCS12.lib) --
 - PROCEDURES:
@@ -1096,11 +1097,11 @@ MODULE:                 -- bios_interrupts.c.o (project_HCS12.lib) --
      rti_handler                               2918       3       3       3   .bss        
 MODULE:                 -- bios_io.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     bios_enable_adc_channel                 FC9C1F      38      56       4   .text       
-     bios_analog_select_channel              FC9C57      17      23       4   .text       
-     bios_read_adc_value                     FC9C6E      4E      78       2   .text       
-     bios_analog_get_channel_single          FC9CBC       A      10       2   .text       
-     bios_analog_enable_temp_sensor          FC9CC6      15      21       2   .text       
+     bios_enable_adc_channel                 FC9C3A      38      56       4   .text       
+     bios_analog_select_channel              FC9C72      17      23       4   .text       
+     bios_read_adc_value                     FC9C89      4E      78       2   .text       
+     bios_analog_get_channel_single          FC9CD7       A      10       2   .text       
+     bios_analog_enable_temp_sensor          FC9CE1      15      21       2   .text       
 - VARIABLES:
      bios_bitmask                              42E6       8       8      37   .rodata     
      bios_port_data_reg                        42EE      26      38       3   .rodata     
@@ -1112,10 +1113,10 @@ MODULE:                 -- bios_io.c.o (project_HCS12.lib) --
      bios_port_int_active_reg                  43D2      26      38       1   .rodata     
 MODULE:                 -- bios_sci.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     bios_sci_module_get_interrupt_src       FC9CDB      84     132      16   .text       
-     bios_sci_module_interrupt_ack           FC9D5F      3C      60      16   .text       
-     bios_sci_module_read_byte               FC9D9B      10      16       2   .text       
-     bios_sci_module_interrupt               FC9DAB     131     305      18   .text       
+     bios_sci_module_get_interrupt_src       FC9CF6      84     132      16   .text       
+     bios_sci_module_interrupt_ack           FC9D7A      3C      60      16   .text       
+     bios_sci_module_read_byte               FC9DB6      10      16       2   .text       
+     bios_sci_module_interrupt               FC9DC6     131     305      18   .text       
 - VARIABLES:
      bios_sci_reg                              43F8      A0     160      11   .rodata     
      ext_sci_asr1_bkdif                        291B       8       8       1   .bss        
@@ -1124,52 +1125,52 @@ MODULE:                 -- bios_sci.c.o (project_HCS12.lib) --
      user_sci_module_tx_interrupt              2929       3       3       5   .bss        
      lin_rx_frame_handling_interrupt           292C       3       3       3   .bss        
      lin_tx_frame_handling_interrupt           292F       3       3       3   .bss        
-     bios_sci_int_src                          2D94      10      16      24   .common     
+     bios_sci_int_src                          2D95      10      16      24   .common     
 MODULE:                 -- bios_timer.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     bios_init_timer                         FC9EDC      53      83       2   .text       
-     bios_timer1_interrupt_ack               FC9F2F       6       6       2   .text       
-     bios_timer2_interrupt_ack               FC9F35       6       6       2   .text       
-     bios_timer3_interrupt_ack               FC9F3B       6       6       2   .text       
-     bios_timer4_interrupt_ack               FC9F41       6       6       2   .text       
-     bios_timer_pwm_channels_init            FC9F47      36      54       2   .text       
-     bios_timer_pwm_set_duty_cycle           FC9F7D      7A     122       2   .text       
-     bios_pwm_read_init                      FC9FF7      B9     185       2   .text       
-     bios_get_prescaler_value                FCA0B0      6E     110       2   .text       
-     bios_ect_channels_init                  FCA11E      7E     126       2   .text       
-     bios_ect_chn_interrupt_ack              FCA19C      10      16      16   .text       
-     bios_ect_ovf_interrupt_ack              FCA1AC      27      39       2   .text       
-     bios_pwm_get_values                     FCA1D3      6D     109       2   .text       
+     bios_init_timer                         FC9EF7      53      83       2   .text       
+     bios_timer1_interrupt_ack               FC9F4A       6       6       2   .text       
+     bios_timer2_interrupt_ack               FC9F50       6       6       2   .text       
+     bios_timer3_interrupt_ack               FC9F56       6       6       2   .text       
+     bios_timer4_interrupt_ack               FC9F5C       6       6       2   .text       
+     bios_timer_pwm_channels_init            FC9F62      36      54       2   .text       
+     bios_timer_pwm_set_duty_cycle           FC9F98      7A     122       2   .text       
+     bios_pwm_read_init                      FCA012      B9     185       2   .text       
+     bios_get_prescaler_value                FCA0CB      6E     110       2   .text       
+     bios_ect_channels_init                  FCA139      7E     126       2   .text       
+     bios_ect_chn_interrupt_ack              FCA1B7      10      16      16   .text       
+     bios_ect_ovf_interrupt_ack              FCA1C7      27      39       2   .text       
+     bios_pwm_get_values                     FCA1EE      6D     109       2   .text       
 - VARIABLES:
-     bios_pwm_read                             2DA4      A8     168      15   .common     
-     bios_pwm_read_cycle_freq                  2E4C       4       4       2   .common     
-     bios_pwm_read_cycle_fakt                  2E50       2       2       1   .common     
+     bios_pwm_read                             2DA5      A8     168      15   .common     
+     bios_pwm_read_cycle_freq                  2E4D       4       4       2   .common     
+     bios_pwm_read_cycle_fakt                  2E51       2       2       1   .common     
 MODULE:                 -- can_db.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     can_db_init                             FCA240      84     132       4   .text       
-     bit_weight_32                           FCA2C4      2B      43       4   .text       
-     can_db_gateway                          FCA2EF      40      64       2   .text       
-     can_input_block_to_db                   FCA32F     1F2     498       7   .text       
-     can_db_output_to_bus                    FCA521     211     529      15   .text       
-     can_db_transmit_deactivate              FCA732      3C      60       4   .text       
-     can_create_mask_simple                  FCA76E     30A     778      13   .text       
-     can_queue_in_process                    FCAA78      54      84       4   .text       
+     can_db_init                             FCA25B      84     132       4   .text       
+     bit_weight_32                           FCA2DF      2B      43       4   .text       
+     can_db_gateway                          FCA30A      40      64       2   .text       
+     can_input_block_to_db                   FCA34A     1F2     498       7   .text       
+     can_db_output_to_bus                    FCA53C     211     529      15   .text       
+     can_db_transmit_deactivate              FCA74D      3C      60       4   .text       
+     can_create_mask_simple                  FCA789     30A     778      13   .text       
+     can_queue_in_process                    FCAA93      54      84       4   .text       
 - VARIABLES:
 MODULE:                 -- CAN_HCS12_BL.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     HW_WATCHDOG_ON_OFF                      FCAACC      3C      60      10   .text       
-     Check_Portbyte                          FCAB08      32      50       2   .text       
-     CAN1_ReceiveMessage_simple              FCAB3A      43      67       2   .text       
-     update_EEprom_SW_Version                FCAB7D      82     130       2   .text       
-     save_ReceiveCan1MsgBuffer               FCABFF      3F      63       2   .text       
-     Check_CRC                               FCAC3E      3F      63      10   .text       
-     Start_wait                              FCAC7D      3A      58       4   .text       
-     can_empfang                             FCACB7     A5B    2651     153   .text       
-     ReadCan1Buffer                          FCB712      29      41       2   .text       
-     CAN1_INPUT_verarbeiten                  FCB73B      15      21       2   .text       
-     sendeCan1Message                        FCB750      5B      91      18   .text       
-     bios_test_baudrate                      FCB7AB      16      22       4   .text       
-     check_scan_delay                        FCB7C1      5A      90       2   .text       
+     HW_WATCHDOG_ON_OFF                      FCAAE7      3C      60      10   .text       
+     Check_Portbyte                          FCAB23      32      50       2   .text       
+     CAN1_ReceiveMessage_simple              FCAB55      43      67       2   .text       
+     update_EEprom_SW_Version                FCAB98      82     130       2   .text       
+     save_ReceiveCan1MsgBuffer               FCAC1A      3F      63       2   .text       
+     Check_CRC                               FCAC59      3F      63      10   .text       
+     Start_wait                              FCAC98      3A      58       4   .text       
+     can_empfang                             FCACD2     A5B    2651     153   .text       
+     ReadCan1Buffer                          FCB72D      29      41       2   .text       
+     CAN1_INPUT_verarbeiten                  FCB756      15      21       2   .text       
+     sendeCan1Message                        FCB76B      5B      91      18   .text       
+     bios_test_baudrate                      FCB7C6      16      22       4   .text       
+     check_scan_delay                        FCB7DC      5A      90       2   .text       
 - VARIABLES:
      EEPROM_Modulname                          2006      1F      31       4   .data       
      EEPROM_SW_Version                         2025      15      21       3   .data       
@@ -1207,49 +1208,49 @@ MODULE:                 -- CAN_HCS12_BL.c.o (project_HCS12.lib) --
      Can1_OverRun                              2968       2       2       1   .bss        
      Jump_To_Resetvector                       296A       2       2       2   .bss        
      SW_Version_Update.4                       296C       1       1       2   .bss        
-     ProgAdressse                              2E52       4       4       3   .common     
-     ModulCanZugriff_aktiv                     2E56       1       1       5   .common     
-     scan_delay_active                         2E57       1       1       3   .common     
-     scan_delay_goal                           2E58       1       1       4   .common     
-     scan_delay_timer                          2E59       4       4       3   .common     
-     Flashdatensatz                            2E5D      96     150      14   .common     
-     TestFlashdatensatz                        2EF3      96     150      10   .common     
-     TransmitMsg                               2F89       E      14      15   .common     
-     RxCan1MsgBuffer                           2F97      FF     255       2   .common     
+     ProgAdressse                              2E53       4       4       3   .common     
+     ModulCanZugriff_aktiv                     2E57       1       1       5   .common     
+     scan_delay_active                         2E58       1       1       3   .common     
+     scan_delay_goal                           2E59       1       1       4   .common     
+     scan_delay_timer                          2E5A       4       4       3   .common     
+     Flashdatensatz                            2E5E      96     150      14   .common     
+     TestFlashdatensatz                        2EF4      96     150      10   .common     
+     TransmitMsg                               2F8A       E      14      15   .common     
+     RxCan1MsgBuffer                           2F98      FF     255       2   .common     
 MODULE:                 -- Cpu.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     PE_low_level_init                       FCB81B     13D     317       2   .text       
-     check_ram_test                          FCB958       1       1       2   .text       
+     PE_low_level_init                       FCB836     13D     317       2   .text       
+     check_ram_test                          FCB973       1       1       2   .text       
      _EntryPoint                               4020      3F      63       0   .init       
      Cpu_Interrupt                             405F       2       2      75   .init       
 - VARIABLES:
 MODULE:                 -- EE_RAM.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     ErrorCheck                              FCB959      18      24       8   .text       
-     ReportError                             FCB971       1       1       8   .text       
-     IEE_RAM_Set_X_WORDS                     FCB972      54      84       2   .text       
-     IEE_RAM_SetData                         FCB9C6      48      72      56   .text       
-     IEE_RAM_SetByte                         FCBA0E      32      50       2   .text       
-     IEE_RAM_SetByte_User                    FCBA40      40      64       2   .text       
-     IEE_RAM_Get_X_WORDS                     FCBA80      54      84       2   .text       
-     IEE_RAM_GetData                         FCBAD4      43      67      40   .text       
-     WAIT_EE_RAM_WRITING                     FCBB17      34      52       2   .text       
-     ENABLE_EE_RAM_WRITING                   FCBB4B      34      52       4   .text       
-     init_FlashClock                         FCBB7F      1C      28       2   .text       
-     IEE_RAM_Init                            FCBB9B     108     264       6   .text       
-     IEE_RAM_GetByte                         FCBCA3      34      52       2   .text       
-     IEE_RAM_GetByte_User                    FCBCD7      40      64       2   .text       
-     LaunchFlashCommand                      FCBD17      BD     189       9   .text       
+     ErrorCheck                              FCB974      18      24       8   .text       
+     ReportError                             FCB98C       1       1       8   .text       
+     IEE_RAM_Set_X_WORDS                     FCB98D      54      84       2   .text       
+     IEE_RAM_SetData                         FCB9E1      48      72      56   .text       
+     IEE_RAM_SetByte                         FCBA29      32      50       2   .text       
+     IEE_RAM_SetByte_User                    FCBA5B      40      64       2   .text       
+     IEE_RAM_Get_X_WORDS                     FCBA9B      54      84       2   .text       
+     IEE_RAM_GetData                         FCBAEF      43      67      40   .text       
+     WAIT_EE_RAM_WRITING                     FCBB32      34      52       2   .text       
+     ENABLE_EE_RAM_WRITING                   FCBB66      34      52       4   .text       
+     init_FlashClock                         FCBB9A      1C      28       2   .text       
+     IEE_RAM_Init                            FCBBB6     108     264       6   .text       
+     IEE_RAM_GetByte                         FCBCBE      34      52       2   .text       
+     IEE_RAM_GetByte_User                    FCBCF2      40      64       2   .text       
+     LaunchFlashCommand                      FCBD32      BD     189       9   .text       
 - VARIABLES:
      var_FCLK_DIV                              204F       1       1       5   .data       
-     ANZ_EE_DATEN                              3096       4       4       3   .common     
-     EE_Status                                 309A       4       4       2   .common     
-     zw_dfPart                                 309E       1       1       1   .common     
-     zw_erPart                                 309F       1       1       1   .common     
-     ERR_EE_RAM_nicht_vorhanden                30A0       2       2       9   .common     
+     ANZ_EE_DATEN                              3097       4       4       3   .common     
+     EE_Status                                 309B       4       4       2   .common     
+     zw_dfPart                                 309F       1       1       1   .common     
+     zw_erPart                                 30A0       1       1       1   .common     
+     ERR_EE_RAM_nicht_vorhanden                30A1       2       2       9   .common     
 MODULE:                 -- HCS12_XEQ384_CAN_Gateway_Demo.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     main                                    FCBDD4     1F8     504      12   .text       
+     main                                    FCBDEF     1F8     504      12   .text       
 - VARIABLES:
      can_cycle_time_receive                    2050       1       1       1   .data       
      can_cycle_time_transmit                   2051       1       1       1   .data       
@@ -1257,32 +1258,32 @@ MODULE:                 -- HCS12_XEQ384_CAN_Gateway_Demo.c.o (project_HCS12.lib)
      modulename_change                         296E       1       1       1   .bss        
      adc_auto_disable                          296F       1       1       2   .bss        
      gateway_function_active                   2970       1       1       2   .bss        
-     time_can                                  30A2       4       4       3   .common     
-     time_can_tx                               30A6       4       4       4   .common     
-     time_graphcode                            30AA       4       4       3   .common     
-     time_main_loop                            30AE       4       4       3   .common     
-     graph_cycle_time_init                     30B2       2       2       2   .common     
-     timer_diff                                30B4       1       1       2   .common     
-     can_any_received_flg                      30B5       4       4       5   .common     
-     can_message_received                      30B9       1       1       5   .common     
-     Flashdatenbuffer                          30BA      64     100       6   .common     
+     time_can                                  30A3       4       4       3   .common     
+     time_can_tx                               30A7       4       4       4   .common     
+     time_graphcode                            30AB       4       4       3   .common     
+     time_main_loop                            30AF       4       4       3   .common     
+     graph_cycle_time_init                     30B3       2       2       2   .common     
+     timer_diff                                30B5       1       1       2   .common     
+     can_any_received_flg                      30B6       4       4       5   .common     
+     can_message_received                      30BA       1       1       5   .common     
+     Flashdatenbuffer                          30BB      64     100       6   .common     
 MODULE:                 -- lin_stack.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     get_ext_dyn_lin_rx_msg_queue            FCBFCC      24      36       2   .text       
-     private_lin_module_get_saved_rx_msg     E38000      5F      95       2   PAGE_E3_739 
-     lin_queue_in_process                    E3805F     128     296       5   PAGE_E3_739 
-     lin_header_received_ack                 E38187       F      15       2   PAGE_E3_739 
-     lin_get_lin_frame_index                 E38196      37      55       2   PAGE_E3_739 
-     private_lin_stack_module_get_saved_rx_header     E381CD      54      84       2   PAGE_E3_739 
+     get_ext_dyn_lin_rx_msg_queue            E38000      24      36       2   PAGE_E3_739 
+     private_lin_module_get_saved_rx_msg     E38024      5F      95       2   PAGE_E3_739 
+     lin_queue_in_process                    E38083     128     296       5   PAGE_E3_739 
+     lin_header_received_ack                 E381AB       F      15       2   PAGE_E3_739 
+     lin_get_lin_frame_index                 E381BA      37      55       2   PAGE_E3_739 
+     private_lin_stack_module_get_saved_rx_header     E381F1      54      84       2   PAGE_E3_739 
 - VARIABLES:
      mgl_ptr_lin_msg_queue                     2052       3       3       2   .data       
      ext_lin_stack_header_received_cb_handler       2971       3       3       3   .bss        
      ext_lin_stack_frame_received_cb_handler       2974       3       3       6   .bss        
 MODULE:                 -- Main_Fkt_BL.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     save_EEProm_Default                     E38221     13B     315       2   PAGE_E3_739 
-     Get_Bootloader_ID                       E3835C      60      96       4   PAGE_E3_739 
-     read_EEPROM_MULTI_INFO                  E383BC     3AF     943      15   PAGE_E3_739 
+     save_EEProm_Default                     E38245     13B     315       2   PAGE_E3_739 
+     Get_Bootloader_ID                       E38380      60      96       4   PAGE_E3_739 
+     read_EEPROM_MULTI_INFO                  E383E0     3AF     943      15   PAGE_E3_739 
 - VARIABLES:
      ret_test                                  2977       2       2       1   .bss        
 MODULE:                 -- mc9s12xep100.c.o (project_HCS12.lib) --
@@ -2028,11 +2029,11 @@ MODULE:                 -- mc9s12xep100.c.o (project_HCS12.lib) --
      _TIM_PACNT                                 3F2       2       2       0   .abs_section_3f2
 MODULE:                 -- os_can.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     os_can_module_get_msg_A                 E3876B     181     385      14   PAGE_E3_739 
-     os_can_module_get_msg_B                 E388EC     181     385      14   PAGE_E3_739 
-     os_can_module_rx                        E38A6D     3C4     964      45   PAGE_E3_739 
-     os_can_copy_msg                         E38E31      4D      77       2   PAGE_E3_739 
-     os_can_send_msg                         E38E7E      5A      90       6   PAGE_E3_739 
+     os_can_module_get_msg_A                 E3878F     181     385      14   PAGE_E3_739 
+     os_can_module_get_msg_B                 E38910     181     385      14   PAGE_E3_739 
+     os_can_module_rx                        E38A91     3C4     964      45   PAGE_E3_739 
+     os_can_copy_msg                         E38E55      4D      77       2   PAGE_E3_739 
+     os_can_send_msg                         E38EA2      5A      90       6   PAGE_E3_739 
 - VARIABLES:
      os_can0_msg_queue_A_beg                   2893       2       2       8   DEFAULT_RAM_EXT
      os_can0_msg_queue_A_end                   2895       1       1       6   DEFAULT_RAM_EXT
@@ -2056,68 +2057,68 @@ MODULE:                 -- os_can.c.o (project_HCS12.lib) --
      os_can4_msg_queue_B_end                   28B0       1       1       6   DEFAULT_RAM_EXT
 MODULE:                 -- os_iee.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     os_eeprom_read_all                      E38ED8      52      82       4   PAGE_E3_739 
+     os_eeprom_read_all                      E38EFC      52      82       4   PAGE_E3_739 
 - VARIABLES:
 MODULE:                 -- os_io.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     os_init_adc                             E38F2A     167     359       7   PAGE_E3_739 
-     os_analog_io_tick                       E39091     145     325      12   PAGE_E3_739 
-     os_analog_int                           E391D6      F0     240       6   PAGE_E3_739 
-     os_analog_int_start                     E392C6      65     101       2   PAGE_E3_739 
-     os_pin_set_direction                    E3932B      43      67       2   PAGE_E3_739 
-     os_pin_set_pull_direction               E3936E      43      67       2   PAGE_E3_739 
-     os_pin_set_pull_enable                  E393B1      43      67       2   PAGE_E3_739 
-     os_pin_set_interrupt_edge               E393F4      43      67       4   PAGE_E3_739 
-     os_pin_set_interrupt_enable             E39437      43      67       2   PAGE_E3_739 
-     os_pin_write                            E3947A      6A     106      14   PAGE_E3_739 
-     os_pin_read                             E394E4      3B      59       6   PAGE_E3_739 
-     os_digin                                E3951F      1D      29       2   PAGE_E3_739 
-     os_digout                               E3953C      3A      58       2   PAGE_E3_739 
-     os_update_digin                         E39576      D5     213       3   PAGE_E3_739 
-     os_update_digout                        E3964B      F6     246       7   PAGE_E3_739 
-     os_init_ports                           E39741      E0     224       3   PAGE_E3_739 
-     os_port_int_increment                   E39821     108     264       9   PAGE_E3_739 
-     os_pwm_analog_io_average                E39929     1F1     497      15   PAGE_E3_739 
+     os_init_adc                             E38F4E     167     359       7   PAGE_E3_739 
+     os_analog_io_tick                       E390B5     145     325      12   PAGE_E3_739 
+     os_analog_int                           E391FA      F0     240       6   PAGE_E3_739 
+     os_analog_int_start                     E392EA      65     101       2   PAGE_E3_739 
+     os_pin_set_direction                    E3934F      43      67       2   PAGE_E3_739 
+     os_pin_set_pull_direction               E39392      43      67       2   PAGE_E3_739 
+     os_pin_set_pull_enable                  E393D5      43      67       2   PAGE_E3_739 
+     os_pin_set_interrupt_edge               E39418      43      67       4   PAGE_E3_739 
+     os_pin_set_interrupt_enable             E3945B      43      67       2   PAGE_E3_739 
+     os_pin_write                            E3949E      6A     106      14   PAGE_E3_739 
+     os_pin_read                             E39508      3B      59       6   PAGE_E3_739 
+     os_digin                                E39543      1D      29       2   PAGE_E3_739 
+     os_digout                               E39560      3A      58       2   PAGE_E3_739 
+     os_update_digin                         E3959A      D5     213       3   PAGE_E3_739 
+     os_update_digout                        E3966F      F6     246       7   PAGE_E3_739 
+     os_init_ports                           E39765      E0     224       3   PAGE_E3_739 
+     os_port_int_increment                   E39845     108     264       9   PAGE_E3_739 
+     os_pwm_analog_io_average                E3994D     1F1     497      15   PAGE_E3_739 
 - VARIABLES:
-     os_adc_vals                               311E       A      10      53   .common     
-     val_ccr                                   3128       1       1       3   .common     
+     os_adc_vals                               311F       A      10      53   .common     
+     val_ccr                                   3129       1       1       3   .common     
 MODULE:                 -- os_timer.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     os_set_timestamp                        E39B1A      44      68       8   PAGE_E3_739 
-     os_timestamp                            E39B5E       B      11      16   PAGE_E3_739 
-     os_get_time_past                        E39B69       A      10       2   PAGE_E3_739 
-     os_time_past                            E39B73      15      21      24   PAGE_E3_739 
-     os_wait                                 E39B88      2D      45       2   PAGE_E3_739 
-     os_timer_tick                           E39BB5      85     133       2   PAGE_E3_739 
-     os_init_pwm                             E39C3A      C4     196       3   PAGE_E3_739 
-     os_init_pwm_duty_read                   E39CFE      2B      43       2   PAGE_E3_739 
-     os_pwm_read_update                      E39D29      2D      45       2   PAGE_E3_739 
+     os_set_timestamp                        E39B3E      44      68       8   PAGE_E3_739 
+     os_timestamp                            E39B82       B      11      16   PAGE_E3_739 
+     os_get_time_past                        E39B8D       A      10       2   PAGE_E3_739 
+     os_time_past                            E39B97      15      21      24   PAGE_E3_739 
+     os_wait                                 E39BAC      2D      45       2   PAGE_E3_739 
+     os_timer_tick                           E39BD9      85     133       2   PAGE_E3_739 
+     os_init_pwm                             E39C5E      C4     196       3   PAGE_E3_739 
+     os_init_pwm_duty_read                   E39D22      2B      43       2   PAGE_E3_739 
+     os_pwm_read_update                      E39D4D      2D      45       2   PAGE_E3_739 
 - VARIABLES:
-     os_time_tick_1ms                          3129       4       4       8   .common     
-     os_time_tick_10ms                         312D       4       4       6   .common     
-     os_time_tick_100ms                        3131       4       4       6   .common     
-     os_time_tick_1000ms                       3135       4       4       6   .common     
-     os_time_tmp1                              3139       2       2       3   .common     
-     os_time_tmp2                              313B       2       2       3   .common     
-     os_time_tmp3                              313D       2       2       3   .common     
+     os_time_tick_1ms                          312A       4       4       8   .common     
+     os_time_tick_10ms                         312E       4       4       6   .common     
+     os_time_tick_100ms                        3132       4       4       6   .common     
+     os_time_tick_1000ms                       3136       4       4       6   .common     
+     os_time_tmp1                              313A       2       2       3   .common     
+     os_time_tmp2                              313C       2       2       3   .common     
+     os_time_tmp3                              313E       2       2       3   .common     
 MODULE:                 -- os_util.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     os_util_init                            E39D56      17      23       2   PAGE_E3_739 
-     main_delay                              E39D6D      24      36       2   PAGE_E3_739 
-     memcpy_far2near                         E39D91      2F      47       8   PAGE_E3_739 
-     change_intel_to_motorola_32_bit         E39DC0      49      73       4   PAGE_E3_739 
-     put_signal_value_to_data_block          E39E09     126     294       2   PAGE_E3_739 
-     get_signal_value_from_data_block        E39F2F      D4     212       3   PAGE_E3_739 
-     os_util_lookup1D                        E3A003     15B     347       7   PAGE_E3_739 
+     os_util_init                            E39D7A      17      23       2   PAGE_E3_739 
+     main_delay                              E39D91      24      36       2   PAGE_E3_739 
+     memcpy_far2near                         E39DB5      2F      47       8   PAGE_E3_739 
+     change_intel_to_motorola_32_bit         E39DE4      49      73       4   PAGE_E3_739 
+     put_signal_value_to_data_block          E39E2D     126     294       2   PAGE_E3_739 
+     get_signal_value_from_data_block        E39F53      D4     212       3   PAGE_E3_739 
+     os_util_lookup1D                        E3A027     15B     347       7   PAGE_E3_739 
 - VARIABLES:
 MODULE:                 -- Start12.c.o (project_HCS12.lib) --
 - PROCEDURES:
-     Init                                    E3A15E      3C      60       2   PAGE_E3_739 
+     Init                                    E3A182      3C      60       2   PAGE_E3_739 
      _Startup                                  4D40      2E      46       1   NON_BANKED  
 - VARIABLES:
      _startupData                              4061       6       6       3   .startData  
 - LABELS:
-     __SEG_END_SSTACK                          333F       0       0       1               
+     __SEG_END_SSTACK                          3340       0       0       1               
 MODULE:                 -- Vectors.c.o (project_HCS12.lib) --
 - PROCEDURES:
 - VARIABLES:
@@ -2131,8 +2132,8 @@ MODULE STATISTIC
   os_io_tables.c.o                             0      0    295
   modulhardwarecode.c.o                        0     68      0
   graph_code.c.o                               2      2      0
-  user_code.c.o                               18    378      0
-  can_db_tables_data.c.o                    2284    407     29
+  user_code.c.o                               19    392      0
+  can_db_tables_data.c.o                    2284    420     29
   os_io_tables_data.c.o                      813    167      2
   lin_db_tables.c.o                           44      0      0
   STRING.C.o (ansixbi.lib)                     0     60      0
@@ -2198,7 +2199,7 @@ SECTION: ".text"
   ErrorCheck ReportError IEE_RAM_Set_X_WORDS IEE_RAM_SetData IEE_RAM_SetByte 
   IEE_RAM_SetByte_User IEE_RAM_Get_X_WORDS IEE_RAM_GetData WAIT_EE_RAM_WRITING 
   ENABLE_EE_RAM_WRITING init_FlashClock IEE_RAM_Init IEE_RAM_GetByte 
-  IEE_RAM_GetByte_User LaunchFlashCommand main get_ext_dyn_lin_rx_msg_queue 
+  IEE_RAM_GetByte_User LaunchFlashCommand main 
 SECTION: ".data"
   graph_cycle_time bios_can_tx_buffer_full_wait ext_dyn_lin_bux_max 
   ext_dyn_lin_msg_queue_size EEPROM_Modulname EEPROM_SW_Version 
@@ -2270,7 +2271,7 @@ SECTION: "DEFAULT_RAM_EXT"
   os_can3_msg_queue_B_end os_can4_msg_queue_A_beg os_can4_msg_queue_A_end 
   os_can4_msg_queue_B_beg os_can4_msg_queue_B_end 
 SECTION: ".common"
-  time_val heartbeat_counter time_64500 can_db can_block_db_ram 
+  variable1 time_val heartbeat_counter time_64500 can_db can_block_db_ram 
   can_bus_db_disable can_block_db_user can_db_baudrate os_port_int_val 
   os_io_vals os_io_prev_vals os_io_vals_disable os_pin_entprell_cnt 
   os_analog_io_vals_err os_analog_io_vals_entprell_cnt 
@@ -3770,8 +3771,8 @@ SECTION: ".abs_section_3f2"
 SECTION: ".abs_section_7f10"
   _InterruptVectorTable 
 SECTION: "PAGE_E3_739"
-  private_lin_module_get_saved_rx_msg lin_queue_in_process 
-  lin_header_received_ack lin_get_lin_frame_index 
+  get_ext_dyn_lin_rx_msg_queue private_lin_module_get_saved_rx_msg 
+  lin_queue_in_process lin_header_received_ack lin_get_lin_frame_index 
   private_lin_stack_module_get_saved_rx_header save_EEProm_Default 
   Get_Bootloader_ID read_EEPROM_MULTI_INFO os_can_module_get_msg_A 
   os_can_module_get_msg_B os_can_module_rx os_can_copy_msg os_can_send_msg 
@@ -4659,85 +4660,86 @@ OBJECT LIST SORTED BY ADDRESS
      ext_lin_stack_header_received_cb_handler       2971       3       3       3   .bss        
      ext_lin_stack_frame_received_cb_handler       2974       3       3       6   .bss        
      ret_test                                  2977       2       2       1   .bss        
-     time_val                                  2979       4       4       3   .common     
-     heartbeat_counter                         297D       4       4       6   .common     
-     time_64500                                2981       4       4       3   .common     
-     can_db                                    2985      68     104      81   .common     
-     can_block_db_ram                          29ED      23      35      28   .common     
-     can_bus_db_disable                        2A10       6       6       1   .common     
-     can_block_db_user                         2A16       B      11       8   .common     
-     can_db_baudrate                           2A21      10      16       8   .common     
-     os_port_int_val                           2A31     1C8     456      16   .common     
-     os_io_vals                                2BF9       2       2      10   .common     
-     os_io_prev_vals                           2BFB       2       2       5   .common     
-     os_io_vals_disable                        2BFD       2       2       4   .common     
-     os_pin_entprell_cnt                       2BFF       F      15       9   .common     
-     os_analog_io_vals_err                     2C0E       3       3       2   .common     
-     os_analog_io_vals_entprell_cnt            2C11       3       3       4   .common     
-     os_analog_io_vals_disable                 2C14       3       3       3   .common     
-     os_analog_io_vals                         2C17       6       6       7   .common     
-     os_analog_io_vals_kal                     2C1D       6       6      10   .common     
-     os_pwm_analog_cal_deactivate              2C23       1       1       1   .common     
-     os_pwm_vals                               2C24      17      23      16   .common     
-     os_pwm_control_vals                       2C3B      19      25       6   .common     
-     os_analog_io_sum_cnt                      2C54       3       3       3   .common     
-     os_analog_io_sum_cnt_max                  2C57       3       3       3   .common     
-     os_analog_io_pwm_index                    2C5A       3       3       8   .common     
-     os_analog_io_pwm_start_index              2C5D       1       1       5   .common     
-     os_analog_io_sum                          2C5E       C      12       8   .common     
-     os_analog_io_sum_buffer                   2C6A       C      12       2   .common     
-     os_pwm_duty_read                          2C76      48      72       7   .common     
-     eeprom_hsddaten                           2CBE      1E      30       6   .common     
-     eeprom_hsddaten_type                      2CDC       2       2       5   .common     
-     eeprom_userdaten                          2CDE      70     112       1   .common     
-     dyn_USERDATENSATZ_SIZE                    2D4E       1       1       2   .common     
-     dyn_USER_VARIABLE_SIZE                    2D4F       1       1       1   .common     
-     dyn_HSDDATENSATZ_SIZE                     2D50       1       1       2   .common     
-     dyn_M2600_ACTIVATE_RS232_RX_INTERRUPT       2D51       1       1       1   .common     
-     dyn_PID2_USER_DEFINED_CYCLE               2D52       2       2       2   .common     
-     os_io                                     2D54       A      10      30   .common     
-     ext_ary_lin_test_frame_flag               2D5E       2       2       3   .common     
-     ext_dyn_lin_rx_msg_queue                  2D60      12      18       2   .common     
-     ext_dyn_lin_rx_header_queue               2D72       1       1       2   .common     
-     ext_lin_bus_db                            2D73       9       9       7   .common     
-     ext_lin_frame_db                          2D7C       8       8       4   .common     
-     bios_can_ext_baudrate                     2D84      10      16       6   .common     
-     bios_sci_int_src                          2D94      10      16      24   .common     
-     bios_pwm_read                             2DA4      A8     168      15   .common     
-     bios_pwm_read_cycle_freq                  2E4C       4       4       2   .common     
-     bios_pwm_read_cycle_fakt                  2E50       2       2       1   .common     
-     ProgAdressse                              2E52       4       4       3   .common     
-     ModulCanZugriff_aktiv                     2E56       1       1       5   .common     
-     scan_delay_active                         2E57       1       1       3   .common     
-     scan_delay_goal                           2E58       1       1       4   .common     
-     scan_delay_timer                          2E59       4       4       3   .common     
-     Flashdatensatz                            2E5D      96     150      14   .common     
-     TestFlashdatensatz                        2EF3      96     150      10   .common     
-     TransmitMsg                               2F89       E      14      15   .common     
-     RxCan1MsgBuffer                           2F97      FF     255       2   .common     
-     ANZ_EE_DATEN                              3096       4       4       3   .common     
-     EE_Status                                 309A       4       4       2   .common     
-     zw_dfPart                                 309E       1       1       1   .common     
-     zw_erPart                                 309F       1       1       1   .common     
-     ERR_EE_RAM_nicht_vorhanden                30A0       2       2       9   .common     
-     time_can                                  30A2       4       4       3   .common     
-     time_can_tx                               30A6       4       4       4   .common     
-     time_graphcode                            30AA       4       4       3   .common     
-     time_main_loop                            30AE       4       4       3   .common     
-     graph_cycle_time_init                     30B2       2       2       2   .common     
-     timer_diff                                30B4       1       1       2   .common     
-     can_any_received_flg                      30B5       4       4       5   .common     
-     can_message_received                      30B9       1       1       5   .common     
-     Flashdatenbuffer                          30BA      64     100       6   .common     
-     os_adc_vals                               311E       A      10      53   .common     
-     val_ccr                                   3128       1       1       3   .common     
-     os_time_tick_1ms                          3129       4       4       8   .common     
-     os_time_tick_10ms                         312D       4       4       6   .common     
-     os_time_tick_100ms                        3131       4       4       6   .common     
-     os_time_tick_1000ms                       3135       4       4       6   .common     
-     os_time_tmp1                              3139       2       2       3   .common     
-     os_time_tmp2                              313B       2       2       3   .common     
-     os_time_tmp3                              313D       2       2       3   .common     
+     variable1                                 2979       1       1       2   .common     
+     time_val                                  297A       4       4       3   .common     
+     heartbeat_counter                         297E       4       4       9   .common     
+     time_64500                                2982       4       4       3   .common     
+     can_db                                    2986      68     104      81   .common     
+     can_block_db_ram                          29EE      23      35      28   .common     
+     can_bus_db_disable                        2A11       6       6       1   .common     
+     can_block_db_user                         2A17       B      11       8   .common     
+     can_db_baudrate                           2A22      10      16       8   .common     
+     os_port_int_val                           2A32     1C8     456      16   .common     
+     os_io_vals                                2BFA       2       2      10   .common     
+     os_io_prev_vals                           2BFC       2       2       5   .common     
+     os_io_vals_disable                        2BFE       2       2       4   .common     
+     os_pin_entprell_cnt                       2C00       F      15       9   .common     
+     os_analog_io_vals_err                     2C0F       3       3       2   .common     
+     os_analog_io_vals_entprell_cnt            2C12       3       3       4   .common     
+     os_analog_io_vals_disable                 2C15       3       3       3   .common     
+     os_analog_io_vals                         2C18       6       6       7   .common     
+     os_analog_io_vals_kal                     2C1E       6       6      10   .common     
+     os_pwm_analog_cal_deactivate              2C24       1       1       1   .common     
+     os_pwm_vals                               2C25      17      23      16   .common     
+     os_pwm_control_vals                       2C3C      19      25       6   .common     
+     os_analog_io_sum_cnt                      2C55       3       3       3   .common     
+     os_analog_io_sum_cnt_max                  2C58       3       3       3   .common     
+     os_analog_io_pwm_index                    2C5B       3       3       8   .common     
+     os_analog_io_pwm_start_index              2C5E       1       1       5   .common     
+     os_analog_io_sum                          2C5F       C      12       8   .common     
+     os_analog_io_sum_buffer                   2C6B       C      12       2   .common     
+     os_pwm_duty_read                          2C77      48      72       7   .common     
+     eeprom_hsddaten                           2CBF      1E      30       6   .common     
+     eeprom_hsddaten_type                      2CDD       2       2       5   .common     
+     eeprom_userdaten                          2CDF      70     112       1   .common     
+     dyn_USERDATENSATZ_SIZE                    2D4F       1       1       2   .common     
+     dyn_USER_VARIABLE_SIZE                    2D50       1       1       1   .common     
+     dyn_HSDDATENSATZ_SIZE                     2D51       1       1       2   .common     
+     dyn_M2600_ACTIVATE_RS232_RX_INTERRUPT       2D52       1       1       1   .common     
+     dyn_PID2_USER_DEFINED_CYCLE               2D53       2       2       2   .common     
+     os_io                                     2D55       A      10      30   .common     
+     ext_ary_lin_test_frame_flag               2D5F       2       2       3   .common     
+     ext_dyn_lin_rx_msg_queue                  2D61      12      18       2   .common     
+     ext_dyn_lin_rx_header_queue               2D73       1       1       2   .common     
+     ext_lin_bus_db                            2D74       9       9       7   .common     
+     ext_lin_frame_db                          2D7D       8       8       4   .common     
+     bios_can_ext_baudrate                     2D85      10      16       6   .common     
+     bios_sci_int_src                          2D95      10      16      24   .common     
+     bios_pwm_read                             2DA5      A8     168      15   .common     
+     bios_pwm_read_cycle_freq                  2E4D       4       4       2   .common     
+     bios_pwm_read_cycle_fakt                  2E51       2       2       1   .common     
+     ProgAdressse                              2E53       4       4       3   .common     
+     ModulCanZugriff_aktiv                     2E57       1       1       5   .common     
+     scan_delay_active                         2E58       1       1       3   .common     
+     scan_delay_goal                           2E59       1       1       4   .common     
+     scan_delay_timer                          2E5A       4       4       3   .common     
+     Flashdatensatz                            2E5E      96     150      14   .common     
+     TestFlashdatensatz                        2EF4      96     150      10   .common     
+     TransmitMsg                               2F8A       E      14      15   .common     
+     RxCan1MsgBuffer                           2F98      FF     255       2   .common     
+     ANZ_EE_DATEN                              3097       4       4       3   .common     
+     EE_Status                                 309B       4       4       2   .common     
+     zw_dfPart                                 309F       1       1       1   .common     
+     zw_erPart                                 30A0       1       1       1   .common     
+     ERR_EE_RAM_nicht_vorhanden                30A1       2       2       9   .common     
+     time_can                                  30A3       4       4       3   .common     
+     time_can_tx                               30A7       4       4       4   .common     
+     time_graphcode                            30AB       4       4       3   .common     
+     time_main_loop                            30AF       4       4       3   .common     
+     graph_cycle_time_init                     30B3       2       2       2   .common     
+     timer_diff                                30B5       1       1       2   .common     
+     can_any_received_flg                      30B6       4       4       5   .common     
+     can_message_received                      30BA       1       1       5   .common     
+     Flashdatenbuffer                          30BB      64     100       6   .common     
+     os_adc_vals                               311F       A      10      53   .common     
+     val_ccr                                   3129       1       1       3   .common     
+     os_time_tick_1ms                          312A       4       4       8   .common     
+     os_time_tick_10ms                         312E       4       4       6   .common     
+     os_time_tick_100ms                        3132       4       4       6   .common     
+     os_time_tick_1000ms                       3136       4       4       6   .common     
+     os_time_tmp1                              313A       2       2       3   .common     
+     os_time_tmp2                              313C       2       2       3   .common     
+     os_time_tmp3                              313E       2       2       3   .common     
      _EntryPoint                               4020      3F      63       0   .init       
      Cpu_Interrupt                             405F       2       2      75   .init       
      can_bus_db_const                          4080      78     120      17   .rodata     
@@ -4768,7 +4770,7 @@ OBJECT LIST SORTED BY ADDRESS
      _LCMP                                     44E3       A      10       4   NON_BANKED  
      _LNEG                                     44ED       9       9       1   NON_BANKED  
      _LCOM                                     44F6       5       5       3   NON_BANKED  
-     _LINC                                     44FB       5       5       5   NON_BANKED  
+     _LINC                                     44FB       5       5       6   NON_BANKED  
      _LMULU16x32                               4500       F      15       1   NON_BANKED  
      _LMULS16x32                               450F      1C      28       1   NON_BANKED  
      _lDivMod                                  452B      B9     185       3   NON_BANKED  
@@ -4823,169 +4825,169 @@ OBJECT LIST SORTED BY ADDRESS
      real_time_Interrupt                       4D12      2E      46       1   NON_BANKED  
      _Startup                                  4D40      2E      46       1   NON_BANKED  
      _InterruptVectorTable                     7F10      EA     234       0   .abs_section_7f10
-     private_lin_module_get_saved_rx_msg     E38000      5F      95       2   PAGE_E3_739 
-     lin_queue_in_process                    E3805F     128     296       5   PAGE_E3_739 
-     lin_header_received_ack                 E38187       F      15       2   PAGE_E3_739 
-     lin_get_lin_frame_index                 E38196      37      55       2   PAGE_E3_739 
-     private_lin_stack_module_get_saved_rx_header     E381CD      54      84       2   PAGE_E3_739 
-     save_EEProm_Default                     E38221     13B     315       2   PAGE_E3_739 
-     Get_Bootloader_ID                       E3835C      60      96       4   PAGE_E3_739 
-     read_EEPROM_MULTI_INFO                  E383BC     3AF     943      15   PAGE_E3_739 
-     os_can_module_get_msg_A                 E3876B     181     385      14   PAGE_E3_739 
-     os_can_module_get_msg_B                 E388EC     181     385      14   PAGE_E3_739 
-     os_can_module_rx                        E38A6D     3C4     964      45   PAGE_E3_739 
-     os_can_copy_msg                         E38E31      4D      77       2   PAGE_E3_739 
-     os_can_send_msg                         E38E7E      5A      90       6   PAGE_E3_739 
-     os_eeprom_read_all                      E38ED8      52      82       4   PAGE_E3_739 
-     os_init_adc                             E38F2A     167     359       7   PAGE_E3_739 
-     os_analog_io_tick                       E39091     145     325      12   PAGE_E3_739 
-     os_analog_int                           E391D6      F0     240       6   PAGE_E3_739 
-     os_analog_int_start                     E392C6      65     101       2   PAGE_E3_739 
-     os_pin_set_direction                    E3932B      43      67       2   PAGE_E3_739 
-     os_pin_set_pull_direction               E3936E      43      67       2   PAGE_E3_739 
-     os_pin_set_pull_enable                  E393B1      43      67       2   PAGE_E3_739 
-     os_pin_set_interrupt_edge               E393F4      43      67       4   PAGE_E3_739 
-     os_pin_set_interrupt_enable             E39437      43      67       2   PAGE_E3_739 
-     os_pin_write                            E3947A      6A     106      14   PAGE_E3_739 
-     os_pin_read                             E394E4      3B      59       6   PAGE_E3_739 
-     os_digin                                E3951F      1D      29       2   PAGE_E3_739 
-     os_digout                               E3953C      3A      58       2   PAGE_E3_739 
-     os_update_digin                         E39576      D5     213       3   PAGE_E3_739 
-     os_update_digout                        E3964B      F6     246       7   PAGE_E3_739 
-     os_init_ports                           E39741      E0     224       3   PAGE_E3_739 
-     os_port_int_increment                   E39821     108     264       9   PAGE_E3_739 
-     os_pwm_analog_io_average                E39929     1F1     497      15   PAGE_E3_739 
-     os_set_timestamp                        E39B1A      44      68       8   PAGE_E3_739 
-     os_timestamp                            E39B5E       B      11      16   PAGE_E3_739 
-     os_get_time_past                        E39B69       A      10       2   PAGE_E3_739 
-     os_time_past                            E39B73      15      21      24   PAGE_E3_739 
-     os_wait                                 E39B88      2D      45       2   PAGE_E3_739 
-     os_timer_tick                           E39BB5      85     133       2   PAGE_E3_739 
-     os_init_pwm                             E39C3A      C4     196       3   PAGE_E3_739 
-     os_init_pwm_duty_read                   E39CFE      2B      43       2   PAGE_E3_739 
-     os_pwm_read_update                      E39D29      2D      45       2   PAGE_E3_739 
-     os_util_init                            E39D56      17      23       2   PAGE_E3_739 
-     main_delay                              E39D6D      24      36       2   PAGE_E3_739 
-     memcpy_far2near                         E39D91      2F      47       8   PAGE_E3_739 
-     change_intel_to_motorola_32_bit         E39DC0      49      73       4   PAGE_E3_739 
-     put_signal_value_to_data_block          E39E09     126     294       2   PAGE_E3_739 
-     get_signal_value_from_data_block        E39F2F      D4     212       3   PAGE_E3_739 
-     os_util_lookup1D                        E3A003     15B     347       7   PAGE_E3_739 
-     Init                                    E3A15E      3C      60       2   PAGE_E3_739 
+     get_ext_dyn_lin_rx_msg_queue            E38000      24      36       2   PAGE_E3_739 
+     private_lin_module_get_saved_rx_msg     E38024      5F      95       2   PAGE_E3_739 
+     lin_queue_in_process                    E38083     128     296       5   PAGE_E3_739 
+     lin_header_received_ack                 E381AB       F      15       2   PAGE_E3_739 
+     lin_get_lin_frame_index                 E381BA      37      55       2   PAGE_E3_739 
+     private_lin_stack_module_get_saved_rx_header     E381F1      54      84       2   PAGE_E3_739 
+     save_EEProm_Default                     E38245     13B     315       2   PAGE_E3_739 
+     Get_Bootloader_ID                       E38380      60      96       4   PAGE_E3_739 
+     read_EEPROM_MULTI_INFO                  E383E0     3AF     943      15   PAGE_E3_739 
+     os_can_module_get_msg_A                 E3878F     181     385      14   PAGE_E3_739 
+     os_can_module_get_msg_B                 E38910     181     385      14   PAGE_E3_739 
+     os_can_module_rx                        E38A91     3C4     964      45   PAGE_E3_739 
+     os_can_copy_msg                         E38E55      4D      77       2   PAGE_E3_739 
+     os_can_send_msg                         E38EA2      5A      90       6   PAGE_E3_739 
+     os_eeprom_read_all                      E38EFC      52      82       4   PAGE_E3_739 
+     os_init_adc                             E38F4E     167     359       7   PAGE_E3_739 
+     os_analog_io_tick                       E390B5     145     325      12   PAGE_E3_739 
+     os_analog_int                           E391FA      F0     240       6   PAGE_E3_739 
+     os_analog_int_start                     E392EA      65     101       2   PAGE_E3_739 
+     os_pin_set_direction                    E3934F      43      67       2   PAGE_E3_739 
+     os_pin_set_pull_direction               E39392      43      67       2   PAGE_E3_739 
+     os_pin_set_pull_enable                  E393D5      43      67       2   PAGE_E3_739 
+     os_pin_set_interrupt_edge               E39418      43      67       4   PAGE_E3_739 
+     os_pin_set_interrupt_enable             E3945B      43      67       2   PAGE_E3_739 
+     os_pin_write                            E3949E      6A     106      14   PAGE_E3_739 
+     os_pin_read                             E39508      3B      59       6   PAGE_E3_739 
+     os_digin                                E39543      1D      29       2   PAGE_E3_739 
+     os_digout                               E39560      3A      58       2   PAGE_E3_739 
+     os_update_digin                         E3959A      D5     213       3   PAGE_E3_739 
+     os_update_digout                        E3966F      F6     246       7   PAGE_E3_739 
+     os_init_ports                           E39765      E0     224       3   PAGE_E3_739 
+     os_port_int_increment                   E39845     108     264       9   PAGE_E3_739 
+     os_pwm_analog_io_average                E3994D     1F1     497      15   PAGE_E3_739 
+     os_set_timestamp                        E39B3E      44      68       8   PAGE_E3_739 
+     os_timestamp                            E39B82       B      11      16   PAGE_E3_739 
+     os_get_time_past                        E39B8D       A      10       2   PAGE_E3_739 
+     os_time_past                            E39B97      15      21      24   PAGE_E3_739 
+     os_wait                                 E39BAC      2D      45       2   PAGE_E3_739 
+     os_timer_tick                           E39BD9      85     133       2   PAGE_E3_739 
+     os_init_pwm                             E39C5E      C4     196       3   PAGE_E3_739 
+     os_init_pwm_duty_read                   E39D22      2B      43       2   PAGE_E3_739 
+     os_pwm_read_update                      E39D4D      2D      45       2   PAGE_E3_739 
+     os_util_init                            E39D7A      17      23       2   PAGE_E3_739 
+     main_delay                              E39D91      24      36       2   PAGE_E3_739 
+     memcpy_far2near                         E39DB5      2F      47       8   PAGE_E3_739 
+     change_intel_to_motorola_32_bit         E39DE4      49      73       4   PAGE_E3_739 
+     put_signal_value_to_data_block          E39E2D     126     294       2   PAGE_E3_739 
+     get_signal_value_from_data_block        E39F53      D4     212       3   PAGE_E3_739 
+     os_util_lookup1D                        E3A027     15B     347       7   PAGE_E3_739 
+     Init                                    E3A182      3C      60       2   PAGE_E3_739 
      modulhardwarecode                       FC8000       1       1       2   .text       
      modulhardwarecode_adc_multiplex         FC8001       1       1       4   .text       
      modulhardwarecode_init                  FC8002      42      66       2   .text       
      graphcode_init                          FC8044       1       1       2   .text       
      graphcode                               FC8045       1       1       2   .text       
      usercode_init                           FC8046       7       7       2   .text       
-     usercode                                FC804D      AD     173       3   .text       
-     user_can_message_receive                FC80FA      C3     195       2   .text       
-     user_int_timer_1ms                      FC81BD       1       1       2   .text       
-     user_defined_int_timer                  FC81BE       1       1       2   .text       
-     user_int_ect                            FC81BF       1       1       2   .text       
-     can_db_tables_data_init_baudrate        FC81C0      53      83       2   .text       
-     can_create_mask                         FC8213      13      19       2   .text       
-     can_db_tables_data_init                 FC8226     12D     301       2   .text       
-     can_tables_get_tx_wait                  FC8353       4       4       2   .text       
-     os_io_tables_data_init                  FC8357      99     153       2   .text       
-     os_modul_specific_init                  FC83F0       5       5       2   .text       
-     os_modul_specific_routines              FC83F5       1       1       2   .text       
-     bios_timer_pwm_read_calc_first          FC83F6       5       5       2   .text       
-     lin_initialization                      FC83FB       1       1       2   .text       
-     int_rx_sci_first                        FC83FC       1       1       3   .text       
-     int_tx_sci_first                        FC83FD       1       1       3   .text       
-     memcpy                                  FC83FE      23      35       2   .text       
-     strcmp                                  FC8421      19      25       4   .text       
-     AD1_HWEnDi                              FC843A      3F      63       4   .text       
-     AD2_HWEnDi                              FC8479      3D      61       4   .text       
-     AD1_Enable                              FC84B6      10      16       2   .text       
-     AD2_Enable                              FC84C6      10      16       2   .text       
-     AD1_MeasureChan                         FC84D6      48      72       2   .text       
-     AD2_MeasureChan                         FC851E      48      72       2   .text       
-     AD1_GetChanValue16                      FC8566      28      40       2   .text       
-     AD2_GetChanValue16                      FC858E      28      40       2   .text       
-     AD1_Init                                FC85B6      27      39       2   .text       
-     AD2_Init                                FC85DD      22      34       2   .text       
-     bios_can_set_ext_baudrate               FC85FF      37      55       2   .text       
-     bios_can_module_filter_A_hit            FC8636      4F      79       2   .text       
-     bios_can_module_set_mask_A              FC8685      E1     225       4   .text       
-     bios_can_module_set_filter_A            FC8766      DD     221       4   .text       
-     bios_can_module_set_mask_B              FC8843      E1     225       6   .text       
-     bios_can_module_set_filter_B            FC8924      DD     221       2   .text       
-     bios_can_module_init                    FC8A01     340     832      12   .text       
-     bios_can_module_disable                 FC8D41      B6     182       4   .text       
-     bios_can_module_send_msg                FC8DF7     96A    2410     220   .text       
-     bios_can_module_get_msg                 FC9761     26A     618      62   .text       
-     bios_can_module_get_msg_id              FC99CB     18A     394      30   .text       
-     bios_can_module_msg_received            FC9B55      35      53       6   .text       
-     bios_can_module_interrupt_ack           FC9B8A      28      40      12   .text       
-     bios_can_parameter_to_number            FC9BB2      53      83       2   .text       
-     bios_init_cpu_clock                     FC9C05       5       5       2   .text       
-     bios_reset_watchdog                     FC9C0A       C      12      26   .text       
-     bios_disable_watchdog                   FC9C16       4       4       2   .text       
-     bios_enable_watchdog                    FC9C1A       5       5       2   .text       
-     bios_enable_adc_channel                 FC9C1F      38      56       4   .text       
-     bios_analog_select_channel              FC9C57      17      23       4   .text       
-     bios_read_adc_value                     FC9C6E      4E      78       2   .text       
-     bios_analog_get_channel_single          FC9CBC       A      10       2   .text       
-     bios_analog_enable_temp_sensor          FC9CC6      15      21       2   .text       
-     bios_sci_module_get_interrupt_src       FC9CDB      84     132      16   .text       
-     bios_sci_module_interrupt_ack           FC9D5F      3C      60      16   .text       
-     bios_sci_module_read_byte               FC9D9B      10      16       2   .text       
-     bios_sci_module_interrupt               FC9DAB     131     305      18   .text       
-     bios_init_timer                         FC9EDC      53      83       2   .text       
-     bios_timer1_interrupt_ack               FC9F2F       6       6       2   .text       
-     bios_timer2_interrupt_ack               FC9F35       6       6       2   .text       
-     bios_timer3_interrupt_ack               FC9F3B       6       6       2   .text       
-     bios_timer4_interrupt_ack               FC9F41       6       6       2   .text       
-     bios_timer_pwm_channels_init            FC9F47      36      54       2   .text       
-     bios_timer_pwm_set_duty_cycle           FC9F7D      7A     122       2   .text       
-     bios_pwm_read_init                      FC9FF7      B9     185       2   .text       
-     bios_get_prescaler_value                FCA0B0      6E     110       2   .text       
-     bios_ect_channels_init                  FCA11E      7E     126       2   .text       
-     bios_ect_chn_interrupt_ack              FCA19C      10      16      16   .text       
-     bios_ect_ovf_interrupt_ack              FCA1AC      27      39       2   .text       
-     bios_pwm_get_values                     FCA1D3      6D     109       2   .text       
-     can_db_init                             FCA240      84     132       4   .text       
-     bit_weight_32                           FCA2C4      2B      43       4   .text       
-     can_db_gateway                          FCA2EF      40      64       2   .text       
-     can_input_block_to_db                   FCA32F     1F2     498       7   .text       
-     can_db_output_to_bus                    FCA521     211     529      15   .text       
-     can_db_transmit_deactivate              FCA732      3C      60       4   .text       
-     can_create_mask_simple                  FCA76E     30A     778      13   .text       
-     can_queue_in_process                    FCAA78      54      84       4   .text       
-     HW_WATCHDOG_ON_OFF                      FCAACC      3C      60      10   .text       
-     Check_Portbyte                          FCAB08      32      50       2   .text       
-     CAN1_ReceiveMessage_simple              FCAB3A      43      67       2   .text       
-     update_EEprom_SW_Version                FCAB7D      82     130       2   .text       
-     save_ReceiveCan1MsgBuffer               FCABFF      3F      63       2   .text       
-     Check_CRC                               FCAC3E      3F      63      10   .text       
-     Start_wait                              FCAC7D      3A      58       4   .text       
-     can_empfang                             FCACB7     A5B    2651     153   .text       
-     ReadCan1Buffer                          FCB712      29      41       2   .text       
-     CAN1_INPUT_verarbeiten                  FCB73B      15      21       2   .text       
-     sendeCan1Message                        FCB750      5B      91      18   .text       
-     bios_test_baudrate                      FCB7AB      16      22       4   .text       
-     check_scan_delay                        FCB7C1      5A      90       2   .text       
-     PE_low_level_init                       FCB81B     13D     317       2   .text       
-     check_ram_test                          FCB958       1       1       2   .text       
-     ErrorCheck                              FCB959      18      24       8   .text       
-     ReportError                             FCB971       1       1       8   .text       
-     IEE_RAM_Set_X_WORDS                     FCB972      54      84       2   .text       
-     IEE_RAM_SetData                         FCB9C6      48      72      56   .text       
-     IEE_RAM_SetByte                         FCBA0E      32      50       2   .text       
-     IEE_RAM_SetByte_User                    FCBA40      40      64       2   .text       
-     IEE_RAM_Get_X_WORDS                     FCBA80      54      84       2   .text       
-     IEE_RAM_GetData                         FCBAD4      43      67      40   .text       
-     WAIT_EE_RAM_WRITING                     FCBB17      34      52       2   .text       
-     ENABLE_EE_RAM_WRITING                   FCBB4B      34      52       4   .text       
-     init_FlashClock                         FCBB7F      1C      28       2   .text       
-     IEE_RAM_Init                            FCBB9B     108     264       6   .text       
-     IEE_RAM_GetByte                         FCBCA3      34      52       2   .text       
-     IEE_RAM_GetByte_User                    FCBCD7      40      64       2   .text       
-     LaunchFlashCommand                      FCBD17      BD     189       9   .text       
-     main                                    FCBDD4     1F8     504      12   .text       
-     get_ext_dyn_lin_rx_msg_queue            FCBFCC      24      36       2   .text       
+     usercode                                FC804D      BF     191       3   .text       
+     user_can_message_receive                FC810C      BF     191       2   .text       
+     user_int_timer_1ms                      FC81CB       1       1       2   .text       
+     user_defined_int_timer                  FC81CC       1       1       2   .text       
+     user_int_ect                            FC81CD       1       1       2   .text       
+     can_db_tables_data_init_baudrate        FC81CE      53      83       2   .text       
+     can_create_mask                         FC8221      13      19       2   .text       
+     can_db_tables_data_init                 FC8234     13A     314       2   .text       
+     can_tables_get_tx_wait                  FC836E       4       4       2   .text       
+     os_io_tables_data_init                  FC8372      99     153       2   .text       
+     os_modul_specific_init                  FC840B       5       5       2   .text       
+     os_modul_specific_routines              FC8410       1       1       2   .text       
+     bios_timer_pwm_read_calc_first          FC8411       5       5       2   .text       
+     lin_initialization                      FC8416       1       1       2   .text       
+     int_rx_sci_first                        FC8417       1       1       3   .text       
+     int_tx_sci_first                        FC8418       1       1       3   .text       
+     memcpy                                  FC8419      23      35       2   .text       
+     strcmp                                  FC843C      19      25       4   .text       
+     AD1_HWEnDi                              FC8455      3F      63       4   .text       
+     AD2_HWEnDi                              FC8494      3D      61       4   .text       
+     AD1_Enable                              FC84D1      10      16       2   .text       
+     AD2_Enable                              FC84E1      10      16       2   .text       
+     AD1_MeasureChan                         FC84F1      48      72       2   .text       
+     AD2_MeasureChan                         FC8539      48      72       2   .text       
+     AD1_GetChanValue16                      FC8581      28      40       2   .text       
+     AD2_GetChanValue16                      FC85A9      28      40       2   .text       
+     AD1_Init                                FC85D1      27      39       2   .text       
+     AD2_Init                                FC85F8      22      34       2   .text       
+     bios_can_set_ext_baudrate               FC861A      37      55       2   .text       
+     bios_can_module_filter_A_hit            FC8651      4F      79       2   .text       
+     bios_can_module_set_mask_A              FC86A0      E1     225       4   .text       
+     bios_can_module_set_filter_A            FC8781      DD     221       4   .text       
+     bios_can_module_set_mask_B              FC885E      E1     225       6   .text       
+     bios_can_module_set_filter_B            FC893F      DD     221       2   .text       
+     bios_can_module_init                    FC8A1C     340     832      12   .text       
+     bios_can_module_disable                 FC8D5C      B6     182       4   .text       
+     bios_can_module_send_msg                FC8E12     96A    2410     220   .text       
+     bios_can_module_get_msg                 FC977C     26A     618      62   .text       
+     bios_can_module_get_msg_id              FC99E6     18A     394      30   .text       
+     bios_can_module_msg_received            FC9B70      35      53       6   .text       
+     bios_can_module_interrupt_ack           FC9BA5      28      40      12   .text       
+     bios_can_parameter_to_number            FC9BCD      53      83       2   .text       
+     bios_init_cpu_clock                     FC9C20       5       5       2   .text       
+     bios_reset_watchdog                     FC9C25       C      12      26   .text       
+     bios_disable_watchdog                   FC9C31       4       4       2   .text       
+     bios_enable_watchdog                    FC9C35       5       5       2   .text       
+     bios_enable_adc_channel                 FC9C3A      38      56       4   .text       
+     bios_analog_select_channel              FC9C72      17      23       4   .text       
+     bios_read_adc_value                     FC9C89      4E      78       2   .text       
+     bios_analog_get_channel_single          FC9CD7       A      10       2   .text       
+     bios_analog_enable_temp_sensor          FC9CE1      15      21       2   .text       
+     bios_sci_module_get_interrupt_src       FC9CF6      84     132      16   .text       
+     bios_sci_module_interrupt_ack           FC9D7A      3C      60      16   .text       
+     bios_sci_module_read_byte               FC9DB6      10      16       2   .text       
+     bios_sci_module_interrupt               FC9DC6     131     305      18   .text       
+     bios_init_timer                         FC9EF7      53      83       2   .text       
+     bios_timer1_interrupt_ack               FC9F4A       6       6       2   .text       
+     bios_timer2_interrupt_ack               FC9F50       6       6       2   .text       
+     bios_timer3_interrupt_ack               FC9F56       6       6       2   .text       
+     bios_timer4_interrupt_ack               FC9F5C       6       6       2   .text       
+     bios_timer_pwm_channels_init            FC9F62      36      54       2   .text       
+     bios_timer_pwm_set_duty_cycle           FC9F98      7A     122       2   .text       
+     bios_pwm_read_init                      FCA012      B9     185       2   .text       
+     bios_get_prescaler_value                FCA0CB      6E     110       2   .text       
+     bios_ect_channels_init                  FCA139      7E     126       2   .text       
+     bios_ect_chn_interrupt_ack              FCA1B7      10      16      16   .text       
+     bios_ect_ovf_interrupt_ack              FCA1C7      27      39       2   .text       
+     bios_pwm_get_values                     FCA1EE      6D     109       2   .text       
+     can_db_init                             FCA25B      84     132       4   .text       
+     bit_weight_32                           FCA2DF      2B      43       4   .text       
+     can_db_gateway                          FCA30A      40      64       2   .text       
+     can_input_block_to_db                   FCA34A     1F2     498       7   .text       
+     can_db_output_to_bus                    FCA53C     211     529      15   .text       
+     can_db_transmit_deactivate              FCA74D      3C      60       4   .text       
+     can_create_mask_simple                  FCA789     30A     778      13   .text       
+     can_queue_in_process                    FCAA93      54      84       4   .text       
+     HW_WATCHDOG_ON_OFF                      FCAAE7      3C      60      10   .text       
+     Check_Portbyte                          FCAB23      32      50       2   .text       
+     CAN1_ReceiveMessage_simple              FCAB55      43      67       2   .text       
+     update_EEprom_SW_Version                FCAB98      82     130       2   .text       
+     save_ReceiveCan1MsgBuffer               FCAC1A      3F      63       2   .text       
+     Check_CRC                               FCAC59      3F      63      10   .text       
+     Start_wait                              FCAC98      3A      58       4   .text       
+     can_empfang                             FCACD2     A5B    2651     153   .text       
+     ReadCan1Buffer                          FCB72D      29      41       2   .text       
+     CAN1_INPUT_verarbeiten                  FCB756      15      21       2   .text       
+     sendeCan1Message                        FCB76B      5B      91      18   .text       
+     bios_test_baudrate                      FCB7C6      16      22       4   .text       
+     check_scan_delay                        FCB7DC      5A      90       2   .text       
+     PE_low_level_init                       FCB836     13D     317       2   .text       
+     check_ram_test                          FCB973       1       1       2   .text       
+     ErrorCheck                              FCB974      18      24       8   .text       
+     ReportError                             FCB98C       1       1       8   .text       
+     IEE_RAM_Set_X_WORDS                     FCB98D      54      84       2   .text       
+     IEE_RAM_SetData                         FCB9E1      48      72      56   .text       
+     IEE_RAM_SetByte                         FCBA29      32      50       2   .text       
+     IEE_RAM_SetByte_User                    FCBA5B      40      64       2   .text       
+     IEE_RAM_Get_X_WORDS                     FCBA9B      54      84       2   .text       
+     IEE_RAM_GetData                         FCBAEF      43      67      40   .text       
+     WAIT_EE_RAM_WRITING                     FCBB32      34      52       2   .text       
+     ENABLE_EE_RAM_WRITING                   FCBB66      34      52       4   .text       
+     init_FlashClock                         FCBB9A      1C      28       2   .text       
+     IEE_RAM_Init                            FCBBB6     108     264       6   .text       
+     IEE_RAM_GetByte                         FCBCBE      34      52       2   .text       
+     IEE_RAM_GetByte_User                    FCBCF2      40      64       2   .text       
+     LaunchFlashCommand                      FCBD32      BD     189       9   .text       
+     main                                    FCBDEF     1F8     504      12   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -5094,7 +5096,7 @@ graph_code.c.o:
   membitarray mem16array mem32array i2c_array 
 user_code.c.o:
   flashtab1 ext_dyn_lin_bus_sleep_flag ext_dyn_lin_schedule_line_index 
-  ext_dyn_lin_schedule_timer ext_dyn_lin_auto_sleep_timer variable1 variable2 
+  ext_dyn_lin_schedule_timer ext_dyn_lin_auto_sleep_timer variable2 
 can_db_tables_data.c.o:
   flashtab1 ext_dyn_lin_bus_sleep_flag ext_dyn_lin_schedule_line_index 
   ext_dyn_lin_schedule_timer ext_dyn_lin_auto_sleep_timer 
@@ -5249,7 +5251,7 @@ Name of initialized Object : can_cycle_time_transmit
  0A
 ------- ROM-ADDRESS: 0x4DA0 ---- RAM-ADDRESS: 0x2052 ---- SIZE       3 ---
 Name of initialized Object : mgl_ptr_lin_msg_queue
- 0FED60
+ 0FED61
 ------- ROM-ADDRESS: 0x4DA3 ---- SIZE       2 ---
 Filling bytes inserted
  0000
@@ -5350,6 +5352,8 @@ _InterruptVectorTable     USES Cpu_Interrupt SCI7_Interrupt TI4_Interrupt
                                 ECT_CH5_Interrupt ECT_CH4_Interrupt ECT_CH3_Interrupt 
                                 ECT_CH2_Interrupt ECT_CH1_Interrupt ECT_CH0_Interrupt 
                                 real_time_Interrupt 
+get_ext_dyn_lin_rx_msg_queue USES ext_dyn_lin_msg_queue_size 
+                                mgl_ptr_lin_msg_queue 
 private_lin_module_get_saved_rx_msg USES ext_dyn_lin_rx_msg_queue_read 
                                 ext_dyn_lin_rx_msg_queue_write ext_dyn_lin_msg_queue_size 
                                 get_ext_dyn_lin_rx_msg_queue memcpy_far2near 
@@ -5512,8 +5516,8 @@ Init                      USES _startupData
 modulhardwarecode_init    USES _MODRR os_pin_write Start_wait 
 usercode_init             USES can_db_transmit_deactivate 
 usercode                  USES time_val os_time_past usercode 
-                                heartbeat_counter _LSHRU os_can_send_msg time_64500 data64500 
-                                os_timestamp 
+                                heartbeat_counter _LINC _LSHRU variable1 os_can_send_msg 
+                                time_64500 data64500 os_timestamp 
 user_can_message_receive  USES os_can_send_msg data64500 
 can_db_tables_data_init_baudrate USES can_db_baudrate 
                                 bios_can_set_ext_baudrate 
@@ -5763,8 +5767,6 @@ main                      USES bios_init_cpu_clock bios_disable_watchdog
                                 can_db_output_to_bus usercode os_update_digout time_main_loop 
                                 os_get_time_past timer_diff update_EEprom_SW_Version 
                                 os_modul_specific_routines os_timestamp bios_reset_watchdog 
-get_ext_dyn_lin_rx_msg_queue USES ext_dyn_lin_msg_queue_size 
-                                mgl_ptr_lin_msg_queue 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -6229,6 +6231,8 @@ DEPENDENCY TREE
  |  |  | 
  |  |  +- os_time_past         (see above)
  |  |  |  
+ |  |  +- _LINC                (see above)
+ |  |  |  
  |  |  +- _LSHRU               (see above)
  |  |  |  
  |  |  +- os_can_send_msg      (see above)
@@ -6534,5 +6538,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 8
-Total size of all blocks to be downloaded: 28665
+Total size of all blocks to be downloaded: 28692
 
