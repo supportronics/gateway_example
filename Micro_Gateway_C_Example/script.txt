@@ -1,0 +1,6 @@
+BL_ID 1FFFFFFX,1 #Set Bootloader-ID
+BAUD 250k #Set baudrate
+SCAN_ALL #Scan
+WAIT 500 #Wait 500ms
+DOWNLOAD "c:\Users\marce\OneDrive\Documentos\GitHub\gateway_example\Micro_Gateway_C_Example\Micro_Gateway_C_Example.s19", ALL
+SCAN_ALL #Do a scan after Download

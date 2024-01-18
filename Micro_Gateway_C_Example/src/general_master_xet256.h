@@ -1,0 +1,8 @@
+#ifndef _GENERAL_MASTER_XET256_H_
+#define _GENERAL_MASTER_XET256_H_
+
+#define HCS12XET256_MASTER_ACTIVE
+
+#endif
+
+

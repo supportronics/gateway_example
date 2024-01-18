@@ -1,0 +1,12 @@
+compiler can_db_tables.c      -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler os_io_tables.c       -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler modulhardwarecode.c  -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler graph_setget.c       -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler graph_code.c         -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler can_db_tables_data.c -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler os_io_tables_data.c  -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler lin_db_tables.c      -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler lin_diagnose.c       -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler user_lin_callback.c  -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+compiler ..\user_code.c       -Cf -CPUHCS12XE -D__FAR_DATA -Mb -Os -TD4LD4LLD4 -WmsgSd12056 -W1
+linker -add(can_db_tables.c.o os_io_tables.c.o modulhardwarecode.c.o graph_setget.c.o graph_code.c.o user_code.c.o can_db_tables_data.c.o os_io_tables_data.c.o lin_db_tables.c.o lin_diagnose.c.o user_lin_callback.c.o)  -add(ansixbi.lib project.lib) -WmsgSd1100 -WmsgSd1912 -WmsgSd1923 -WStdoutOn -W1 -WErrFileOn -WmsgNu=abcet -B -M
